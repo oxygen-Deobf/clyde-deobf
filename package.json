@@ -1,0 +1,17 @@
+{
+    "name": "oxygen-deobf",
+    "version": "1.0.0",
+    "description": "Oxygen Deobf - Clyde deobf",
+    "main": "oxygen.js",
+    "bin": { "oxygen-deobf": "./oxygen.js" },
+    "scripts": {
+        "start": "node oxygen.js",
+        "bot": "node bot/nucleus.js"
+    },
+    "engines": { "node": ">=18" },
+    "license": "MIT",
+    "dependencies": {
+        "discord.js": "^14.16.0",
+        "dotenv": "^16.4.0"
+    }
+}
