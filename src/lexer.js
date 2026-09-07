@@ -25,7 +25,7 @@ class Lexer {
     }
 
     atEnd() { return this.pos >= this.src.length; }
-    peek(off) { return this.src[this.pos + off] || ""; }
+    peek(off) { return this.src[this.pos + (off || 0)] || ""; }
 
     advance() {
         const c = this.src[this.pos++];
@@ -168,7 +168,7 @@ class Lexer {
     run() {
         while (!this.atEnd()) {
             const c = this.peek();
-            if (c === " " || c === "\t" || c === "\r" || c === "\n" || c === "\v" || c === "\f") { this.advance(); continue; }
+            if (c === " " || c === "\t" || c === "\r" || c === "\n" || c === "\v" || c === "\f" || c.charCodeAt(0) === 0 || c.charCodeAt(0) === 65533 || c.charCodeAt(0) === 0xFEFF || (c >= "\u0000" && c <= "\u001F" && c !== "\n" && c !== "\t" && c !== "\r")) { this.advance(); continue; }
             if (c === "-" && this.peek(1) === "-") {
                 if (this.peek(2) === "[") {
                     const save = this.pos;
